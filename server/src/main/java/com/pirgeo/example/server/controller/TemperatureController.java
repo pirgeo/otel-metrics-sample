@@ -5,6 +5,7 @@ import com.pirgeo.example.server.util.Location;
 import com.pirgeo.example.server.temperatureprovider.AbstractTemperatureProvider;
 import com.pirgeo.example.server.temperatureprovider.SimpleTemperatureProvider;
 import io.opentelemetry.api.OpenTelemetry;
+import io.opentelemetry.api.common.Attributes;
 import io.opentelemetry.api.metrics.Meter;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -19,8 +20,9 @@ public class TemperatureController {
 //        temperatureProvider = new SimpleTemperatureProvider();
 
         Meter meter = openTelemetry.getMeter("temperature_contoller");
+        Attributes attributes = Attributes.builder().put("location", location.getName()).build();
         meter.gaugeBuilder("coffeeshop.outside_temperature")
-                .buildWithCallback(gauge -> gauge.record(temperatureProvider.getTemperature()));
+                .buildWithCallback(gauge -> gauge.record(temperatureProvider.getTemperature(), attributes));
     }
 
     /**
