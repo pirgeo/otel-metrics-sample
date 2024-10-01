@@ -1,0 +1,5 @@
+coffeeshop:
+  location: "sydney"
+
+server:
+  port: 8082

@@ -1,0 +1,5 @@
+coffeeshop:
+  location: "new york"
+
+server:
+  port: 8083

@@ -1,0 +1,5 @@
+coffeeshop:
+  location: "vienna"
+
+server:
+  port: 8081

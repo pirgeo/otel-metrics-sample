@@ -1,0 +1,5 @@
+coffeeshop:
+  location: "linz"
+
+server:
+  port: 8084

@@ -1,1 +1,4 @@
 rootProject.name = 'otel-metrics-sample'
+include 'client'
+include 'server'
+

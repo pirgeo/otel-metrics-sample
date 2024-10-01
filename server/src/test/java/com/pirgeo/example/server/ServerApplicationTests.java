@@ -1,10 +1,10 @@
-package com.pirgeo.example.otelmetricssample;
+package com.pirgeo.example.server;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class OtelMetricsSampleApplicationTests {
+class ServerApplicationTests {
 
     @Test
     void contextLoads() {
