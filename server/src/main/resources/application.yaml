@@ -24,3 +24,9 @@ otel:
     export:
       # Defines how often metrics are published to the backend.
       interval: 60000
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: prometheus

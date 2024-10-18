@@ -30,6 +30,9 @@ dependencies {
 
     implementation("io.opentelemetry.instrumentation:opentelemetry-spring-boot-starter")
 
+    implementation 'org.springframework.boot:spring-boot-starter-actuator'
+    implementation 'io.micrometer:micrometer-registry-prometheus'
+
     // allows reading .env files
     implementation 'me.paulschwarz:spring-dotenv:4.0.0'
 }
