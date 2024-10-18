@@ -1,0 +1,26 @@
+# Instruct Spring Boot to read the .env file that contains OTLP endpoint and ingest token.
+spring.config.import: optional:file:.env[.properties]
+
+# set up the OTel exporters.
+otel:
+  exporter:
+    otlp:
+      # read the OTLP endpoint from an environment variable
+      # if set on this level, the paths for metrics, traces, and logs will be appended automatically (so just specify the base URL)
+      # If this is unset, it will default to `localhost:4317`, which is the endpoint on which a local collector would listen.
+      endpoint: ${OTLP_ENDPOINT}
+      headers:
+        Authorization: "Api-Token ${DYNATRACE_INGEST_TOKEN}"
+
+      # Allows sending via HTTP or gRPC. We are sending via HTTP today.
+      protocol: http/protobuf
+
+      # Set up metrics to export in Delta AggregationTemporality.
+      metrics:
+        temporality:
+          preference: DELTA
+
+  metric:
+    export:
+      # Defines how often metrics are published to the backend.
+      interval: 60000
